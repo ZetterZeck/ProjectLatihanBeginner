@@ -1,7 +1,6 @@
 #include <iostream>
-using std::cout;
-using std::cin;
-using std::endl;
+#include <string>;
+using namespace std;
 
 //Level 1: Simulator Karakter Sederhana
 /* class karakter
@@ -42,46 +41,54 @@ public:
 
 };*/
 
-//Level 3: Mesin Penjual Otomatis Ajaib
+/*Level 3: Mesin Penjual Otomatis Ajaib
 class mesinVending
 {
 public:
-	std::string jenisRamuan[6] = { " ", "1.Ramuan Kesehatan (100) - stok: 10\n", "2.Ramuan Energi (200) - stok: 10\n", "Ramuan Kebangkitan (300) - stok: 10\n", "Ramuan Keberuntungan (400) - stok: 10\n", "Ramuan Kekuatan (500) - stok: 10\n" };
-	int stokRamuan = 10;
-	int ramuan[6] = { 0, 100, 200, 300, 400, 500 };
-	int stokRoti = 7;
-	std::string jenisRoti[4] = { " ", "1.Roti Biasa(50) - stok: 7\n", "2.Roti Isi Daging(100) - stok: 7\n", "3.Roti Isi Sayuran(75) - stok: 7\n" };
-	int roti[4] = { 0, 50, 100, 75 };
+	// Menggunakan array untuk stok agar setiap item punya stok sendiri
+	string jenisRamuan[6] = { " ", "1. Ramuan Kesehatan", "2. Ramuan Energi", "3. Ramuan Kebangkitan", "4. Ramuan Keberuntungan", "5. Ramuan Kekuatan" };
+	int hargaRamuan[6] = { 0, 100, 200, 300, 400, 500 };
+	int stokRamuan[6] = { 0, 10, 10, 10, 10, 10 };
+
+	string jenisRoti[4] = { " ", "1. Roti Biasa", "2. Roti Isi Daging", "3. Roti Isi Sayuran" };
+	int hargaRoti[4] = { 0, 50, 100, 75 };
+	int stokRoti[4] = { 0, 7, 7, 7 };
+
 	int koin = 0;
-	int infut;
-	int infut2;
-	int infut3;
-	int infut4;
-	void newRoti()
+
+	// Fungsi untuk menampilkan item, menerima array nama, harga, dan stok
+	void tampilkanMenu(string jenis[], int harga[], int stok[], int ukuran)
 	{
-		stokRoti--;
-		cout << "Stok roti sekarang: " << stokRoti << endl;
+		for (int i = 1; i < ukuran; ++i)
+		{
+			cout << jenis[i] << " (Harga: " << harga[i] << " | Stok: " << stok[i] << ")" << endl;
+		}
 	}
-	void newRamuan()
+
+	// Fungsi untuk memproses transaksi, mengurangi koin dan stok
+	bool prosesTransaksi(int pilihan, int harga[], int stok[])
 	{
-		stokRamuan--;
-		cout << "Stok tersisa: " << stokRamuan << endl;
+		if (stok[pilihan] <= 0)
+		{
+			cout << "Maaf, stok barang ini sudah habis!\n\n";
+			return false;
+		}
+		if (koin >= harga[pilihan])
+		{
+			koin -= harga[pilihan];
+			stok[pilihan]--;
+			cout << "Anda berhasil membeli barang! Stok tersisa: " << stok[pilihan] << endl;
+			cout << "Sisa koin Anda: " << koin << " koin.\n\n";
+			return true;
+		}
+		else
+		{
+			cout << "Koin tidak cukup! Koin Anda: " << koin << ", Harga: " << harga[pilihan] << ".\n\n";
+			return false;
+		}
 	}
-	void newKoin()
-	{
-		koin += infut;
-	}
-	int kembalian()
-	{
-		koin = koin - ramuan[infut3];
-		cout << "Kembalian Anda: " << koin << " koin.";
-	}
-	int kembalian1()
-	{
-		koin = koin - roti[infut3];
-		cout << "Kembalian Anda: " << koin << " koin.";
-	}
-};
+};*/
+
 
 int main()
 {
@@ -115,22 +122,22 @@ int main()
 		pertama.run();
 		cout << pertama.nama << " berlari dan kehilangan 20 energi" << endl;
 		cout << "Kesehatan: " << pertama.health << ", Energi: " << pertama.energi << "\n\n";
-		
+
 	}
 	else
 	{
 		cout << "Aksi tidak dikenali." << "\n\n";
 	}
 
-	Level 2: Penjaga Gerbang 
-	
+	Level 2: Penjaga Gerbang
+
 	gameKuis player;
 	cout << "Penjaga Gerbang: Jawab teka-tekiku jika kau berani!\n";
-    // Replace this line:
-    // player.pertanyaan1;
+	// Replace this line:
+	// player.pertanyaan1;
 
-    // With this line to actually call the function and display the question:
-    cout << player.pertanyaan1;
+	// With this line to actually call the function and display the question:
+	cout << player.pertanyaan1;
 	cout << "Jawabanmu : ";
 	cin >> player.input1;
 	if (player.input1 == player.jawaban1)
@@ -160,8 +167,8 @@ int main()
 	cout << player.pertanyaan3;
 	cout << "Jawabanmu : ";
 	cin >> player.input3;
-	
-    if (player.input3 == player.jawaban3)
+
+	if (player.input3 == player.jawaban3)
 	{
 		cout << "Penjaga Gerbang: Kau bijaksana. Silakan lewat.\n";
 	}
@@ -175,206 +182,86 @@ int main()
 	cout << endl;*/
 
 	//Level 3: Mesin Penjual Otomatis Ajaib
-	mesinVending pembeli;
-	while (true)
-	{
-		cout << "--- Mesin Penjual Ajaib ---\n";
-		cout << " [1] Ramuan\n[2] Roti\n[3] Koin\nKoin Anda: 0 | Pilihan Anda: ";
-		cin >> pembeli.infut4;
+	/*
+	  mesinVending pembeli;
+    int pilihanMenuUtama = 0;
 
-		if (pembeli.infut4 < 0 && pembeli.infut4 > 3)
-		{
-			cout << "Tolong masukkan angka dengan benar !\n\n";
-			continue;
-		}
-		else if (pembeli.infut4 == 1)
-		{
-			pembeli.infut3;
-			do
-			{
-				cout << pembeli.jenisRamuan;
-				cout << "\nMasukkan nomor ramuan yang ingin dibeli: ";
-				cin >> pembeli.infut3;
-				cout << "\nTolong masukkan angka dengan benar !\n\n";
-			} while (pembeli.infut3 < 0 || pembeli.infut3 > 5);
+    while (true)
+    {
+        cout << "--- Mesin Penjual Ajaib ---\n";
+        // Menampilkan jumlah koin saat ini dengan benar
+        cout << "Koin Anda: " << pembeli.koin << " | Pilihan Anda:\n";
+        cout << "[1] Beli Ramuan\n[2] Beli Roti\n[3] Masukkan Koin\n[4] Keluar\n";
+        cout << "Pilihan: ";
+        cin >> pilihanMenuUtama;
 
-			if (pembeli.infut3 == 1)
-				{
-					cout << "Anda memilih " << pembeli.jenisRamuan[1] << endl;
-					if (pembeli.stokRamuan > 0)
-					{
-						if (pembeli.koin >= pembeli.ramuan[1])
-						{
-							cout << "Anda membeli :" << pembeli.jenisRamuan[1] << "! ";
-							pembeli.newRamuan();
-							pembeli.kembalian();
-							return 0;
-							
-						}
-						else
-						{
-							cout << "Koin tidak cukup!\n\n";
-							continue;
-						}
-					}
-					else
-					{
-						cout << "Stok ramuan habis!\n\n";
-						continue;
-					}
-				}
-			
-			
-		}
-		else if (pembeli.infut3 == 2)
-		{
-			cout << "Anda memilih " << pembeli.jenisRamuan[2] << endl;
-			if (pembeli.stokRamuan > 0)
-			{
-				if (pembeli.koin >= pembeli.ramuan[2])
-				{
-					cout << "Anda membeli :" << pembeli.jenisRamuan[2] << "! ";
-					pembeli.newRamuan();
-					pembeli.kembalian();
-					return 0;
+        if (pilihanMenuUtama == 1) // Beli Ramuan
+        {
+            cout << "\n--- Pilih Ramuan ---\n";
+            pembeli.tampilkanMenu(pembeli.jenisRamuan, pembeli.hargaRamuan, pembeli.stokRamuan, 6);
+            
+            int pilihanItem = 0;
+            cout << "Masukkan nomor ramuan yang ingin dibeli (1-5): ";
+            cin >> pilihanItem;
 
-				}
-				else
-				{
-					cout << "Koin tidak cukup!\n\n";
-					continue;
-				}
-			}
-			else
-			{
-				cout << "Stok ramuan habis!\n\n";
-				continue;
-			}
-		}
-		else if (pembeli.infut3 == 3)
-		{
-			cout << "Anda memilih " << pembeli.jenisRamuan[3] << endl;
-			if (pembeli.stokRamuan > 0)
-			{
-				if (pembeli.koin >= pembeli.ramuan[3])
-				{
-					cout << "Anda membeli :" << pembeli.jenisRamuan[3] << "! ";
-					pembeli.newRamuan();
-					pembeli.kembalian();
-					return 0;
+            if (pilihanItem >= 1 && pilihanItem <= 5)
+            {
+                pembeli.prosesTransaksi(pilihanItem, pembeli.hargaRamuan, pembeli.stokRamuan);
+            }
+            else
+            {
+                cout << "Pilihan tidak valid.\n\n";
+            }
+        }
+        else if (pilihanMenuUtama == 2) // Beli Roti
+        {
+            cout << "\n--- Pilih Roti ---\n";
+            pembeli.tampilkanMenu(pembeli.jenisRoti, pembeli.hargaRoti, pembeli.stokRoti, 4);
 
-				}
-				else
-				{
-					cout << "Koin tidak cukup!\n\n";
-					continue;
-				}
-			}
-			else
-			{
-				cout << "Stok ramuan habis!\n\n";
-				continue;
-			}
-		}
-		else if (pembeli.infut3 == 4)
-		{
-			cout << "Anda memilih " << pembeli.jenisRamuan[4] << endl;
-			if (pembeli.stokRamuan > 0)
-			{
-				if (pembeli.koin >= pembeli.ramuan[4])
-				{
-					cout << "Anda membeli :" << pembeli.jenisRamuan[4] << "! ";
-					pembeli.newRamuan();
-					pembeli.kembalian();
-					return 0;
+            int pilihanItem = 0;
+            cout << "Masukkan nomor roti yang ingin dibeli (1-3): ";
+            cin >> pilihanItem;
+            
+            if (pilihanItem >= 1 && pilihanItem <= 3)
+            {
+                pembeli.prosesTransaksi(pilihanItem, pembeli.hargaRoti, pembeli.stokRoti);
+            }
+            else
+            {
+                cout << "Pilihan tidak valid.\n\n";
+            }
+        }
+        else if (pilihanMenuUtama == 3) // Masukkan Koin
+        {
+            int koinMasuk = 0;
+            cout << "Berapa koin yang ingin Anda masukkan? ";
+            cin >> koinMasuk;
 
-				}
-				else
-				{
-					cout << "Koin tidak cukup!\n\n";
-					continue;
-				}
-			}
-			else
-			{
-				cout << "Stok ramuan habis!\n\n";
-				continue;
-			}
-		}
-		else
-		{
-			cout << "Anda memilih " << pembeli.jenisRamuan[5] << endl;
-			if (pembeli.stokRamuan > 0)
-			{
-				if (pembeli.koin >= pembeli.ramuan[5])
-				{
-					cout << "Anda membeli :" << pembeli.jenisRamuan[5] << "! ";
-					pembeli.newRamuan();
-					pembeli.kembalian();
-					return 0;
+            if (koinMasuk > 0)
+            {
+                pembeli.koin += koinMasuk;
+                cout << "Koin berhasil ditambahkan. Koin Anda sekarang: " << pembeli.koin << "\n\n";
+            }
+            else
+            {
+                cout << "Jumlah koin tidak valid.\n\n";
+            }
+        }
+        else if (pilihanMenuUtama == 4) // Keluar
+        {
+            cout << "Terima kasih telah menggunakan Mesin Penjual Ajaib!" << endl;
+            break; // Keluar dari loop while(true)
+        }
+        else
+        {
+            cout << "Pilihan tidak valid. Tolong masukkan angka antara 1 dan 4.\n\n";
+        }
+    }
 
-				}
-				else
-				{
-					cout << "Koin tidak cukup!\n\n";
-					continue;
-				}
-			}
-			else
-			{
-				cout << "Stok ramuan habis!\n\n";
-				continue;
-			}
-		}
-		else if (pembeli.infut4 == 2)
-		{
-			pembeli.infut3;
-			do
-			{
-				cout << pembeli.jenisRoti;
-				cout << "\nMasukkan nomor ramuan yang ingin dibeli: ";
-				cin >> pembeli.infut3;
-				cout << "\nTolong masukkan angka dengan benar !\n\n";
-			} while (pembeli.infut3 < 0 || pembeli.infut3 > 3);
+    return 0;
+	*/
 
-			if (pembeli.infut3 == 1)
-			{
-				cout << "Anda memilih " << pembeli.jenisRoti[1] << endl;
-				if (pembeli.stokRoti > 0)
-				{
-					if (pembeli.koin >= pembeli.roti[1])
-					{
-						cout << "Anda membeli :" << pembeli.jenisRoti[1] << "! ";
-						pembeli.newRoti();
-						pembeli.kembalian2();
-						return 0;
+ 
 
-					}
-					else
-					{
-						cout << "Koin tidak cukup!\n\n";
-						continue;
-					}
-				}
-				else
-				{
-					cout << "Stok roti habis!\n\n";
-					continue;
-				}
-			}
-		}
-		else
-		{
-			cout << "Berapa koin yang Anda ingin masukkan ? " << pembeli.infut << endl;
-			cin >> pembeli.infut;
-			for (int i = 1; i <= pembeli.infut; i++)
-			{
-				cout << "Memproses Koin.... (Koin ke-" << i << " masuk)\n";
-				
-			}
-			cout << "Koin Anda sekarang: " << pembeli.koin << "\n\n";
-	}
-
-
-	return 0;
+return 0;
 }
