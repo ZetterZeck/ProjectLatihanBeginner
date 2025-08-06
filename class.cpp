@@ -4,7 +4,7 @@ using std::cin;
 using std::endl;
 
 //Level 1: Simulator Karakter Sederhana
-class karakter
+/* class karakter
 {
 public:
 
@@ -40,7 +40,7 @@ public:
 		
 		
 
-};
+};*/
 
 //Level 3: Mesin Penjual Otomatis Ajaib
 class mesinVending
@@ -86,7 +86,7 @@ public:
 int main()
 {
 	//Level 1: Simulator Karakter Sederhana
-	karakter pertama;
+	/*karakter pertama;
 	pertama.nama;
 	pertama.health;
 	pertama.energi;
@@ -122,8 +122,8 @@ int main()
 		cout << "Aksi tidak dikenali." << "\n\n";
 	}
 
-	/*Level 2: Penjaga Gerbang(masih ada masalah ketika string hasil() dilakukan dan saat salah satu if nya benar malah  
-	langsung berhenti)*/
+	Level 2: Penjaga Gerbang 
+	
 	gameKuis player;
 	cout << "Penjaga Gerbang: Jawab teka-tekiku jika kau berani!\n";
     // Replace this line:
@@ -172,7 +172,7 @@ int main()
 	}
 
 	cout << "SELAMAT, ANDA MENANG!" << endl;
-	cout << endl;
+	cout << endl;*/
 
 	//Level 3: Mesin Penjual Otomatis Ajaib
 	mesinVending pembeli;
