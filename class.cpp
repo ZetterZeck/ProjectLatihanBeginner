@@ -3,7 +3,7 @@
 using namespace std;
 
 //Level 1: Simulator Karakter Sederhana
-/* class karakter
+ class karakter
 {
 public:
 
@@ -28,9 +28,9 @@ public:
 	std::string jawaban1 = "peta"  ;
 	std::string jawaban2 = "besok" ;
 	std::string jawaban3 = "nama";
-	std::string input1;
-	std::string input2;
-	std::string input3;
+	std::string input1 = 0;
+	std::string input2 = 0;
+	std::string input3 = 0;
 	
 
 	
@@ -39,9 +39,9 @@ public:
 		
 		
 
-};*/
+};
 
-/*Level 3: Mesin Penjual Otomatis Ajaib
+//Level 3: Mesin Penjual Otomatis Ajaib (Diperbaiki Gemini :v)
 class mesinVending
 {
 public:
@@ -87,13 +87,13 @@ public:
 			return false;
 		}
 	}
-};*/
+};
 
 
 int main()
 {
 	//Level 1: Simulator Karakter Sederhana
-	/*karakter pertama;
+	karakter pertama;
 	pertama.nama;
 	pertama.health;
 	pertama.energi;
@@ -179,10 +179,10 @@ int main()
 	}
 
 	cout << "SELAMAT, ANDA MENANG!" << endl;
-	cout << endl;*/
+	cout << endl;
 
-	//Level 3: Mesin Penjual Otomatis Ajaib
-	/*
+	//Level 3: Mesin Penjual Otomatis Ajaib (Diperbaiki Gemini :v)
+	
 	  mesinVending pembeli;
     int pilihanMenuUtama = 0;
 
@@ -259,9 +259,10 @@ int main()
     }
 
     return 0;
-	*/
+	
 
  
 
 return 0;
+
 }
