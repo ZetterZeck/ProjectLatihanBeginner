@@ -46,17 +46,18 @@ public:
 class mesinVending
 {
 public:
-	std::string jenisRamuan[5] = { "1.Ramuan Kesehatan (100) - stok: 10\n", "2.Ramuan Energi (200) - stok: 10\n", "Ramuan Kebangkitan (300) - stok: 10\n", "Ramuan Keberuntungan (400) - stok: 10\n", "Ramuan Kekuatan (500) - stok: 10\n" };
+	std::string jenisRamuan[6] = { " ", "1.Ramuan Kesehatan (100) - stok: 10\n", "2.Ramuan Energi (200) - stok: 10\n", "Ramuan Kebangkitan (300) - stok: 10\n", "Ramuan Keberuntungan (400) - stok: 10\n", "Ramuan Kekuatan (500) - stok: 10\n" };
 	int stokRamuan = 10;
-	int ramuan[5] = { 100, 200, 300, 400, 500 };
+	int ramuan[6] = { 0, 100, 200, 300, 400, 500 };
 	int stokRoti = 7;
-	std::string jenisRoti[3] = { "1.Roti Biasa (50) - stok: 7\n", "2.Roti Isi Daging (100) - stok: 7\n", "3.Roti Isi Sayuran (75) - stok: 7\n" };
+	std::string jenisRoti[4] = { " ", "1.Roti Biasa(50) - stok: 7\n", "2.Roti Isi Daging(100) - stok: 7\n", "3.Roti Isi Sayuran(75) - stok: 7\n" };
+	int roti[4] = { 0, 50, 100, 75 };
 	int koin = 0;
 	int infut;
 	int infut2;
 	int infut3;
 	int infut4;
-	void stokRoti()
+	void newRoti()
 	{
 		stokRoti--;
 		cout << "Stok roti sekarang: " << stokRoti << endl;
@@ -64,7 +65,7 @@ public:
 	void newRamuan()
 	{
 		stokRamuan--;
-		cout << "Stok ramuan sekarang: " << stokRamuan << endl;
+		cout << "Stok tersisa: " << stokRamuan << endl;
 	}
 	void newKoin()
 	{
@@ -72,8 +73,13 @@ public:
 	}
 	int kembalian()
 	{
-		koin = infut2 - ramuan[infut3];
-		cout << "Kembalian Anda: " << koin;
+		koin = koin - ramuan[infut3];
+		cout << "Kembalian Anda: " << koin << " koin.";
+	}
+	int kembalian1()
+	{
+		koin = koin - roti[infut3];
+		cout << "Kembalian Anda: " << koin << " koin.";
 	}
 };
 
@@ -183,16 +189,190 @@ int main()
 		}
 		else if (pembeli.infut4 == 1)
 		{
+			pembeli.infut3;
+			do
+			{
+				cout << pembeli.jenisRamuan;
+				cout << "\nMasukkan nomor ramuan yang ingin dibeli: ";
+				cin >> pembeli.infut3;
+				cout << "\nTolong masukkan angka dengan benar !\n\n";
+			} while (pembeli.infut3 < 0 || pembeli.infut3 > 5);
 
+			if (pembeli.infut3 == 1)
+				{
+					cout << "Anda memilih " << pembeli.jenisRamuan[1] << endl;
+					if (pembeli.stokRamuan > 0)
+					{
+						if (pembeli.koin >= pembeli.ramuan[1])
+						{
+							cout << "Anda membeli :" << pembeli.jenisRamuan[1] << "! ";
+							pembeli.newRamuan();
+							pembeli.kembalian();
+							return 0;
+							
+						}
+						else
+						{
+							cout << "Koin tidak cukup!\n\n";
+							continue;
+						}
+					}
+					else
+					{
+						cout << "Stok ramuan habis!\n\n";
+						continue;
+					}
+				}
+			
+			
 		}
-		else if (pembeli.infut4 == 2)
+		else if (pembeli.infut3 == 2)
 		{
+			cout << "Anda memilih " << pembeli.jenisRamuan[2] << endl;
+			if (pembeli.stokRamuan > 0)
+			{
+				if (pembeli.koin >= pembeli.ramuan[2])
+				{
+					cout << "Anda membeli :" << pembeli.jenisRamuan[2] << "! ";
+					pembeli.newRamuan();
+					pembeli.kembalian();
+					return 0;
 
+				}
+				else
+				{
+					cout << "Koin tidak cukup!\n\n";
+					continue;
+				}
+			}
+			else
+			{
+				cout << "Stok ramuan habis!\n\n";
+				continue;
+			}
+		}
+		else if (pembeli.infut3 == 3)
+		{
+			cout << "Anda memilih " << pembeli.jenisRamuan[3] << endl;
+			if (pembeli.stokRamuan > 0)
+			{
+				if (pembeli.koin >= pembeli.ramuan[3])
+				{
+					cout << "Anda membeli :" << pembeli.jenisRamuan[3] << "! ";
+					pembeli.newRamuan();
+					pembeli.kembalian();
+					return 0;
+
+				}
+				else
+				{
+					cout << "Koin tidak cukup!\n\n";
+					continue;
+				}
+			}
+			else
+			{
+				cout << "Stok ramuan habis!\n\n";
+				continue;
+			}
+		}
+		else if (pembeli.infut3 == 4)
+		{
+			cout << "Anda memilih " << pembeli.jenisRamuan[4] << endl;
+			if (pembeli.stokRamuan > 0)
+			{
+				if (pembeli.koin >= pembeli.ramuan[4])
+				{
+					cout << "Anda membeli :" << pembeli.jenisRamuan[4] << "! ";
+					pembeli.newRamuan();
+					pembeli.kembalian();
+					return 0;
+
+				}
+				else
+				{
+					cout << "Koin tidak cukup!\n\n";
+					continue;
+				}
+			}
+			else
+			{
+				cout << "Stok ramuan habis!\n\n";
+				continue;
+			}
 		}
 		else
 		{
+			cout << "Anda memilih " << pembeli.jenisRamuan[5] << endl;
+			if (pembeli.stokRamuan > 0)
+			{
+				if (pembeli.koin >= pembeli.ramuan[5])
+				{
+					cout << "Anda membeli :" << pembeli.jenisRamuan[5] << "! ";
+					pembeli.newRamuan();
+					pembeli.kembalian();
+					return 0;
 
+				}
+				else
+				{
+					cout << "Koin tidak cukup!\n\n";
+					continue;
+				}
+			}
+			else
+			{
+				cout << "Stok ramuan habis!\n\n";
+				continue;
+			}
 		}
+		else if (pembeli.infut4 == 2)
+		{
+			pembeli.infut3;
+			do
+			{
+				cout << pembeli.jenisRoti;
+				cout << "\nMasukkan nomor ramuan yang ingin dibeli: ";
+				cin >> pembeli.infut3;
+				cout << "\nTolong masukkan angka dengan benar !\n\n";
+			} while (pembeli.infut3 < 0 || pembeli.infut3 > 3);
+
+			if (pembeli.infut3 == 1)
+			{
+				cout << "Anda memilih " << pembeli.jenisRoti[1] << endl;
+				if (pembeli.stokRoti > 0)
+				{
+					if (pembeli.koin >= pembeli.roti[1])
+					{
+						cout << "Anda membeli :" << pembeli.jenisRoti[1] << "! ";
+						pembeli.newRoti();
+						pembeli.kembalian2();
+						return 0;
+
+					}
+					else
+					{
+						cout << "Koin tidak cukup!\n\n";
+						continue;
+					}
+				}
+				else
+				{
+					cout << "Stok roti habis!\n\n";
+					continue;
+				}
+			}
+		}
+		else
+		{
+			cout << "Berapa koin yang Anda ingin masukkan ? " << pembeli.infut << endl;
+			cin >> pembeli.infut;
+			for (int i = 1; i <= pembeli.infut; i++)
+			{
+				cout << "Memproses Koin.... (Koin ke-" << i << " masuk)\n";
+				
+			}
+			cout << "Koin Anda sekarang: " << pembeli.koin << "\n\n";
 	}
 
 
