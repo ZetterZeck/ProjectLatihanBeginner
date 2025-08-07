@@ -41,7 +41,7 @@ int main() {
 		cout << endl;
 	}
 	cout << endl;
-	// 3. Pola Berlian Penuh (paling susah njay)
+	// 3. Pola Berlian Penuh (ini sama gemini dana paling susah njay)
 		int y;
 
 		// Meminta input dari pengguna
@@ -109,6 +109,18 @@ int main() {
 			for (int k = 1; k <= j; k++)
 			{
 				cout << i * k << "\t"; // Menggunakan tab untuk pemisah
+			}
+			cout << endl;
+		}
+		cout << endl;
+		//6 segitiga siku-siku terbalik
+		cout << "Masukkan angka: ";
+		cin >> j;
+		for (int i = 1; i <= j; i++)
+		{
+			for (int k = 5; k >= i; k--)
+			{
+				cout << "*";
 			}
 			cout << endl;
 		}
